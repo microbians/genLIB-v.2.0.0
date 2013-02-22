@@ -1,0 +1,42 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<style>
+body { 
+font-family: 		Verdana, Arial, Helvetica; 
+font-size:		8pt; 
+background-color: 	#FFFFFF;
+color: 			#000000;
+}
+</style>
+
+<script language="javascript" src="genlib.js"></script>
+<script>
+	genLIB.include('addons.button')
+	genLIB.include('addons.neuraltype')
+</script>
+<script>
+	neuralType.setPath('font/');
+	neuralType.include('arialblack','black');
+	neuralType.include('arialblack','grey');
+	neuralType.include('arialblack','white');
+</script>
+<script>
+genLIB.onload=function() {
+	btn1 = new neuralType.button(20,20,200,20,'orange','#c0c0c0','#f0f0f0','white','black','grey','arialblack','This is a neuratype BUTTON 01', function(){alert('click')} )
+	btn2 = new neuralType.button(20,50,200,20,'orange','#c0c0c0','#f0f0f0','white','black','grey','arialblack','This is a neuratype BUTTON 02', function(){alert('click')} )
+	btn3 = new neuralType.button(20,80,200,20,'orange','#c0c0c0','#f0f0f0','white','black','grey','arialblack','This is a neuratype BUTTON 03', function(){alert('click')} )
+	mymenu = new button.collection( btn1, btn2, btn3 )
+	genLIB.document.add(btn1)
+	genLIB.document.add(btn2)
+	genLIB.document.add(btn3)
+}
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

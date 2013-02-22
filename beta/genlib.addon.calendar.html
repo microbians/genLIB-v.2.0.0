@@ -1,0 +1,23 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language="javascript" src="../genlib.js"></script>
+<script>
+genLIB.include('calendar')
+</script>
+<script>
+genLIB.onload=function() {
+	mycalendar = new calendar(20,20,20,20,"#c0c0c0")
+	mycalendar.css.font='normal 8px small fonts,arial'
+	mycalendar.draw()
+	genLIB.document.add(mycalendar)
+	mycalendar.setBgColor='#c0c0c0'
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

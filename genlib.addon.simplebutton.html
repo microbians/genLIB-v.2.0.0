@@ -1,0 +1,49 @@
+<html>
+<head>
+<META NAME='ROBOTS' CONTENT='NOINDEX, NOFOLLOW'>
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language='javascript' src='genlib.js'></script>
+<script>
+	genLIB.include('addons.simplebutton')
+</script>
+<script>
+genLIB.onload=function() {
+	allbuttons = new domLayer(null,20,40,460,60,'#c0c0c0')
+	allbuttons.css.font='normal 9px Small Fonts';
+	genLIB.document.add(allbuttons)
+
+	mybutton1 = new simplebutton(10+110*0, 10, 100, 40, '#FF0000','#FFFFFF','UP', '#00FF00',null,null, '#0000FF',null,null, '#FFFFFF','#000000',null, '#d0d0d0','#808080','DIS', 'normal 9px Small Fonts,VT100,Arial,Helvetica', true, true, null)
+	allbuttons.add( mybutton1 )
+
+	mybutton1.upFn=function(e){window.status="ovFunction 2"}
+	mybutton1.ovFn=function(e){window.status="ovFunction ok"}
+
+	mybutton2 = new simplebutton(10+110*1, 10, 100, 40, '#FF0000','#FFFFFF','UP', '#00FF00','#FFFFFF','OV', '#0000FF','#FFFFFF','DW', '#FFFFFF','#000000','SEL', '#d0d0d0','#808080','DIS', 'normal 9px Small Fonts,VT100,Arial,Helvetica', true, true, null)
+	allbuttons.add( mybutton2 )
+
+	mybutton3 = new simplebutton(10+110*2, 10, 100, 40, '#FF0000','#FFFFFF','UP', '#00FF00','#FFFFFF','OV', '#0000FF','#FFFFFF','DW', '#FFFFFF','#000000','SEL', '#d0d0d0','#808080','DIS', 'normal 9px Small Fonts,VT100,Arial,Helvetica', true, true, null)
+	allbuttons.add( mybutton3 )
+
+	mybutton4 = new simplebutton(10+110*3, 10, 100, 40, '#FF0000','#FFFFFF','UP', '#00FF00','#FFFFFF','OV', '#0000FF','#FFFFFF','DW', '#FFFFFF','#000000','SEL', '#d0d0d0','#808080','DIS', 'normal 9px Small Fonts,VT100,Arial,Helvetica', true, true, null)
+	allbuttons.add( mybutton4 )
+
+	mymenu = new simplebutton.collection( mybutton1, mybutton2, mybutton3, mybutton4 )
+
+	mybuttonA = new simplebutton(30 , 120, 200, 20, '#FF0000','#FFFFFF','DISABLE BUTTON 1', '#00FF00',null,null, '#0000FF',null,null, '#c0c0c0',null,null, null,null,null, 'normal 9px Small Fonts,VT100,Arial,Helvetica', true, false, function(){mybutton1.disable()} )
+	genLIB.document.add( mybuttonA )
+
+	mybuttonB = new simplebutton(250, 120, 200, 20, '#FF0000','#FFFFFF','ENABLE BUTTON 1' , '#00FF00',null,null, '#0000FF',null,null, '#c0c0c0',null,null, null,null,null, 'normal 9px Small Fonts,VT100,Arial,Helvetica', true, false, function(){mybutton1.enable() } )
+	genLIB.document.add( mybuttonB )
+
+
+	mymenu2 = new simplebutton.collection( mybuttonA, mybuttonB )
+
+	mybuttonB.eventCT.invokeEvent('click')
+
+}
+</script>
+</head>
+<body>
+</body>
+</html>

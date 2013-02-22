@@ -1,0 +1,43 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language='javascript' src='genlib.js'></script>
+<script>
+	genLIB.include('addons.imgpreload')
+</script>
+<script>
+genLIB.onload=function() {
+	canvas = new domLayer(null,20,40,480,65,'#c0c0c0')
+	canvas.css.font='normal 9px verdana';
+	genLIB.document.add(canvas)
+
+	num1 = domImg.addImg('img/1.gif');
+	num2 = domImg.addImg('img/2.gif');
+	num3 = domImg.addImg('img/3.gif');
+	num4 = domImg.addImg('img/4.gif');
+	num5 = domImg.addImg('img/5.gif');
+	num6 = domImg.addImg('img/6.gif');
+	num7 = domImg.addImg('img/7.gif');
+	num8 = domImg.addImg('img/8.gif');
+	num9 = domImg.addImg('img/9.gif');
+
+	domImg.onImgLoaded = function() {
+		canvas.setHTML('IMAGES PRELOADED [ '+ Math.round(domImg.done/domImg.imgs.length*100) +'% ]')
+	}
+
+	domImg.onload = function() { 
+		if (!domImg.error) {
+			canvas.setHTML('IMAGES PRELOADED [ ALL OK ]')
+			canvas.setHTML(canvas.html+'<br>'+'&nbsp;'+domImg.html(num1)+'&nbsp;'+domImg.html(num2)+'&nbsp;'+domImg.html(num3)+'&nbsp;'+domImg.html(num4)+'&nbsp;'+domImg.html(num5)+'&nbsp;'+domImg.html(num6)+'&nbsp;'+domImg.html(num7)+'&nbsp;'+domImg.html(num8)+'&nbsp;'+domImg.html(num9))
+		} else canvas.setHTML('SOME IMAGES NOT FOUNT')
+	}
+	domImg.check()
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

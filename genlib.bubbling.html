@@ -1,0 +1,94 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language="Javascript" src="genlib.js"></script>
+<script>
+BUBBLEval = true
+debughead = "<font face=verdana size=1 color='#FFFFFF'><b>DEBUG</b></font><br><br><font face='lucida console' size=1 color='#000000'>"
+
+function showdebug(t) { 
+	if ( debug.contentH() > debug.h-10 ) debug.setHTML(debughead)
+	debug.setHTML(debug.html+t+"<br>")
+}
+
+genLIB.onload=function() {
+	debug = new domLayer(null,20,20,300,200,"#c0c0c0")
+	genLIB.document.add(debug)
+	debug.setHTML(debughead)
+
+	a = new domLayer("Alayer",330,20,290,100)
+	a.setBgColor('red')
+	a.setHTML("<font face=verdana size=1 color='#000000'>A</font>")
+	
+	b = new domLayer("Blayer",120,0,170,50)
+	b.setBgColor('#FFD000')
+	b.setZ(20)
+	b.setHTML("<font face=verdana size=1 color='#000000'>B in A</font>")
+	
+	d = new domLayer("Dlayer",50,0,100,100)
+	d.setBgColor('orange')
+	d.setZ(10)
+	d.setHTML("<font face=verdana size=1 color='#000000'>D in A</font>")
+
+	c = new domLayer("Clayer",80,0,100,15)
+	c.setBgColor('#FFFF00')
+	c.setHTML("<font face=verdana size=1 color='#000000'>C in B</font>")
+
+	l = new EventListener()
+	l.onmouseover = function(e) { 
+		var s = e.source
+		s.backupcolor=s.bgColor; 
+		s.setBgColor("#c0c0c0"); 
+		showdebug('OVER &nbsp;' + s.id) 
+		e.bubble=BUBBLEval
+	}
+	l.onmouseout  = function(e) { 
+		var s = e.source
+		s.setBgColor(s.backupcolor); 
+		showdebug('OUT &nbsp;&nbsp;'  + s.id) 
+		e.bubble=BUBBLEval
+	}
+	l.onclick     = function(e) { var s = e.source; showdebug('CLICK '+ s.id) }
+	l.ondblclick  = function(e) { var s = e.source; showdebug('CLICK '+ s.id) }
+	a.addEventListener(l)
+	b.addEventListener(l)
+	c.addEventListener(l)
+	d.addEventListener(l)
+
+	genLIB.document.add(a)
+	a.add(b)
+	a.add(d)
+	b.add(c)
+
+	bubblebutton = new domLayer(null,170,10,120,"auto","#a0a0a0")
+	l = new EventListener()
+	l.onmouseover = function(e) { 
+		var s = e.source
+		s.setBgColor("#ffffff"); 
+		e.bubble=false
+	}
+	l.onmouseout = function(e) { 
+		var s = e.source
+		s.setBgColor("#a0a0a0"); 
+		e.bubble=false
+	}
+	l.onclick = function(e) { 
+		var s = e.source;
+		BUBBLEval=!BUBBLEval
+		bubblebutton.setHTML("<font face=verdana size=1 color='#000000'><b>&nbsp;bubble = "+BUBBLEval + "</b></font>")
+		e.bubble=false
+	}
+	bubblebutton.setHTML("<font face=verdana size=1 color='#000000'><b>&nbsp;bubble = "+BUBBLEval + "</b></font>")
+	bubblebutton.addEventListener(l)
+	debug.add(bubblebutton)
+}
+
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

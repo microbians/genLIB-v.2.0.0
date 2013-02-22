@@ -1,0 +1,46 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language='javascript' src='genlib.js'></script>
+<script>
+	genLIB.include('addons.loadlayer')
+</script>
+<script>
+debughead = "<font face=verdana size=1 color='#FFFFFF'><b>DEBUG</b></font><br><br><font face='lucida console' size=1 color='#000000'>"
+
+function showdebug(t) { 
+	if ( debug.contentH() > debug.h-10 ) debug.setHTML(debughead)
+	debug.setHTML(debug.html+t+"<br>")
+}
+
+genLIB.onload=function() {
+	canvas = new domLayer(null,10,10,220,400,"#c0c0c0");
+	genLIB.document.add(canvas);
+
+	shitoverpanel1 = new domLayer(null,120,120,210,100,"red");
+	shitoverpanel1.setHTML("<font size=1 face=verdana color=white><b>DIV INSIDE</b></font>");
+
+	panel1 =new loadLayer(null,10,20,200,275,'orange','genlib.addon.loadlayer_t1.html','loading','bold 10px verdana','white')
+	panel1.css.padding='10px'
+
+	panel2 =new loadLayer(null,240,10,200,175,'red',null,'loading','bold 10px verdana','white')
+	panel2.css.padding='10px'
+	mylayer=new loadLayer('mylayer',460,10,200,175,'#c0c0c0',null,'loading','bold 10px verdana','white')
+	mylayer.css.padding='10px'
+	panel2.setURL('genlib.addon.loadlayer_t2.html')
+	mylayer.setURL('genlib.addon.loadlayer_t3.html')
+
+	panel1.add(shitoverpanel1)
+	canvas.add( panel1 )
+	genLIB.document.add( panel2 )
+	genLIB.document.add( mylayer )
+	canvas.setHTML("<font size=1 face=verdana color=white><b>CANVAS inside document</b></font>");
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

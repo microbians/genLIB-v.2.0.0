@@ -1,0 +1,55 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<style>
+body { 
+font-family: 		Verdana, Arial, Helvetica; 
+font-size:		8pt; 
+background-color: 	#FFFFFF;
+color: 			#000000;
+}
+</style>
+
+<script language="javascript" src="genlib.js"></script>
+<script>
+	genLIB.include('addons.neuraltype')
+</script>
+<script>
+	neuralType.setPath('font/');
+	neuralType.include('arialblack','black');
+	neuralType.include('impact','');
+</script>
+<script>
+genLIB.onload=function() {
+	txtarialblack="style='font-family: arial black; font-size: 11px; color:#000000;'"
+	txtimpact="style='font-family: impact; font-size: 30px; color:#000000;'"
+	texto="THIS IS A TEST"
+
+	cavasinfoneuraltype = new domLayer(null,20,20,600,200)
+	genLIB.document.add(cavasinfoneuraltype)
+
+	canvasarialblack = new domLayer(null,20,42,600,200)
+	genLIB.document.add(canvasarialblack)
+
+	canvasimpact = new domLayer(null,20,52,600,200)
+	genLIB.document.add(canvasimpact)
+
+	cavasinfoneuraltype.setHTML("<font color=red size=1 face=verdana>The NEURALTYPE (arialblack & impact)</font>")
+	canvasarialblack.fontWrite('arialblack','black', texto);
+	canvasimpact.fontWrite('impact','', texto);
+
+	canvasbrowserrendered = new domLayer(null,20,170,600,200)
+	genLIB.document.add(canvasbrowserrendered)
+
+	canvasbrowserrendered.setHTML("<font color=red size=1 face=verdana>The real ttf font (if you have installed)<br>"+ txtarialblack +"</font><div "+txtarialblack+">"+ texto +"</div>")
+	canvasbrowserrendered.setHTML(canvasbrowserrendered.html+"<br><br><font color=red size=1 face=verdana>The real ttf font (if you have installed)<br>"+ txtimpact +"</font><div "+txtimpact+">"+ texto +"</div>")
+}
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

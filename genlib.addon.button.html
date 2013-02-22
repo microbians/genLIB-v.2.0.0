@@ -1,0 +1,52 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language='javascript' src='genlib.js'></script>
+<script>
+	genLIB.include('addons.button')
+</script>
+<script>
+genLIB.onload=function() {
+	allbuttons = new domLayer(null,20,40,460,60,'#c0c0c0')
+	allbuttons.css.font='normal 9px verdana';
+	genLIB.document.add(allbuttons)
+
+	mybutton1 = new button(10, 10, 100, 40, '#FF0000', '1234567890qwertyuiopasdfghjk', '#00FF00','1234567890qwertyuiopasdfghjk', '#0000FF', '1234567890qwertyuiopasdfghjk', '#FFFFFF', '1234567890qwertyuiopasdfghjk', '#d0d0d0','DIS', true, true, null)
+	mybutton1.upLyr.css.color="#FFFFFF"
+	mybutton1.dsLyr.css.color="#808080"
+	mybutton1.css.font='normal 9px verdana';
+	allbuttons.add( mybutton1 )
+	mybutton2 = new button(120, 10, 100, 40, '#FF0000', 'UP', '#00FF00','OV', '#0000FF', 'DW', '#FFFFFF', 'SEL', '#d0d0d0','DIS', true, true, null)
+	mybutton2.upLyr.css.color="#FFFFFF"
+	mybutton2.css.font='normal 9px verdana';
+	allbuttons.add( mybutton2 )
+	mybutton3 = new button(230, 10, 100, 40, '#FF0000', 'UP', '#00FF00','OV', '#0000FF', 'DW', '#FFFFFF', 'SEL', '#d0d0d0','DIS', true, true, null)
+	mybutton3.upLyr.css.color="#FFFFFF"
+	mybutton3.css.font='normal 9px verdana';
+	allbuttons.add( mybutton3 )
+	mybutton4 = new button(340, 10, 100, 40, '#FF0000', 'UP', '#00FF00','OV', '#0000FF', 'DW', '#FFFFFF', 'SEL', '#d0d0d0','DIS', true, true, null)
+	mybutton4.upLyr.css.color="#FFFFFF"
+	mybutton4.css.font='normal 9px verdana';
+	allbuttons.add( mybutton4 )
+	mymenu = new button.collection( mybutton1, mybutton2, mybutton3, mybutton4 )
+
+	mybutton5 = new button(30, 120, 200, 20, '#FF0000','DISABLE BUTTON 1', '#00FF00',null, '#0000FF',null, '#c0c0c0',null, null, null, true, false, function(){mybutton1.disable();} )
+	mybutton5.upLyr.css.color="#FFFFFF"
+	mybutton5.css.font='normal 9px verdana';
+	genLIB.document.add( mybutton5 )
+	mybutton6 = new button(250, 120, 200, 20, '#FF0000','ENABLE BUTTON 1', '#00FF00',null, '#0000FF',null, '#c0c0c0',null, null, null, true, false, function(){mybutton1.enable();} )
+	mybutton6.upLyr.css.color="#FFFFFF"
+	mybutton6.eventCT.invokeEvent('click')
+	mybutton6.css.font='normal 9px verdana';
+	genLIB.document.add( mybutton6 )
+
+	mymenu2 = new button.collection( mybutton5, mybutton6 )
+
+}
+</script>
+</head>
+<body>
+</body>
+</html>

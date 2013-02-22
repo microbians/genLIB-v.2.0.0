@@ -1,0 +1,58 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<style>
+body { background-color: #FFFFFF; color: #000000; font-family: Verdana; }
+A:link    	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:visited 	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:active  	{ font-size:10px; font-family: Verdana; color:#000000; font-weight: bold; text-decoration: none; }
+A:hover  	{ font-size:10px; font-family: Verdana; color:#FFFFFF; background-color:#000000; font-weight: bold; text-decoration: none; }
+</style>
+<script language="Javascript" src="genlib.js"></script>
+<script language="Javascript">
+genLIB.onload= function() {
+	a=new domLayer(null,150,18,200,170)
+	a.css.font='normal 9px verdana';
+	a.setHTML("MAIN Layer")
+	a.setBgColor('#FFD000')
+	genLIB.document.add(a)
+	b=new domLayer(null,20,20,150,20)
+	b.css.font='normal 9px verdana';
+	b.setHTML("CHILD Layer")
+	b.setBgColor('#FFFF00')
+	a.add(b)
+}
+</script>
+</head>
+<body>
+<table>
+<tr><td bgcolor=#f0f0f0 align=right>
+<a onselect="return false" onfocus="this.blur()" href="javascript:a.setX(a.x+10)">Move Layer X+=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setY(a.y+10)">Move Layer Y+=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setX(a.x-10)">Move Layer X-=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setY(a.y-10)">Move Layer Y-=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setW(a.w+10)">Resize Layer W+=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setH(a.h+10)">Resize Layer H+=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setW(a.w-10)">Resize Layer W-=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setH(a.h-10)">Resize Layer H-=10</a><br>
+<a onfocus="this.blur()" href="javascript:a.setClip([10,50,50,10])">CLIP it</a><br>
+</td></tr><tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:b.setX(b.x+10)">Move Layer X+=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setY(b.y+10)">Move Layer Y+=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setX(b.x-10)">Move Layer X-=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setY(b.y-10)">Move Layer Y-=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setW(b.w+10)">Resize Layer W+=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setH(b.h+10)">Resize Layer H+=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setW(b.w-10)">Resize Layer W-=10</a><br>
+<a onfocus="this.blur()" href="javascript:b.setH(b.h-10)">Resize Layer H-=10</a><br>
+</td></tr><tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:b.setVisible(false)">HIDE Child</a><br>
+<a onfocus="this.blur()" href="javascript:b.setVisible(true)">SHOW Child</a><br>
+</td></tr><tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:a.setHTML('Main LAYER html had changed')">setHTML of MAIN</a><br>
+<a onfocus="this.blur()" href="javascript:alert(a.html)">getHTML of MAIN</a><br>
+</td></tr></table>
+</body>
+</html>

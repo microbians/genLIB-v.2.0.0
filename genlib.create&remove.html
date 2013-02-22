@@ -1,0 +1,72 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<style>
+body { background-color: #FFFFFF; color: #000000; font-family: Verdana; }
+A:link    	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:visited 	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:active  	{ font-size:10px; font-family: Verdana; color:#000000; font-weight: bold; text-decoration: none; }
+A:hover  	{ font-size:10px; font-family: Verdana; color:#FFFFFF; background-color:#000000; font-weight: bold; text-decoration: none; }
+DIV             { font:normal 9px verdana ; color:#FFFFFF}
+</style>
+<script language="Javascript" src="genlib.js"></script>
+<script language="Javascript">
+genLIB.onload= function(){
+	canvas = new domLayer(null,260,10,400,400,"#c0c0c0");
+	canvas.setHTML("<font size=1 face=verdana color=white><b>CANVAS inside document</b></font>");
+	genLIB.document.add(canvas);
+}
+function addLayer(){
+	var dlyr = new domLayer(null,260+Math.random()*420,10+Math.random()*320, 100,"auto",'orange');
+	genLIB.document.add(dlyr);
+	dlyr.setHTML("outside canvas #"+(genLIB.document.childrens.length-1));
+}
+function removeLayer(){
+	var c = genLIB.document.childrens
+	if (c.length>1) { var l=c[c.length-1]; l.del()	}
+	else alert("No more layers in genLIB.document except canvas")
+}
+function addLayer_canvas(){
+	var dlyr = new domLayer(null,Math.random()*390,Math.random()*390, 100,"auto",'black');
+	canvas.add(dlyr);
+	dlyr.setHTML("inside canvas #"+(canvas.childrens.length));
+}
+function removeLayer_canvas(){
+	var c=canvas.childrens
+	if (c.length>0) {
+		pp=c[c.length-1]
+		pp.del()
+	}
+	else alert("No more layers in canvas")
+}
+function movefromto(from,to){
+	var c = from.childrens
+	if (c.length>1) { 
+		l=c[c.length-1]; 
+		l.remove()
+		to.add(l)
+		l.moveTo( l.x%300, l.y%300)
+		l.setBgColor("red")
+	}
+	else alert("No more layers in "+from +" except canvas")
+}
+</script>
+</head>
+<body>
+<table>
+<tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:addLayer()">+ Layer inside document</a><br>
+<a onfocus="this.blur()" href="javascript:removeLayer()">- Layer inside document</a><br>
+</td></tr><tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:addLayer_canvas()">+ Layer inside CANVAS</a><br>
+<a onfocus="this.blur()" href="javascript:removeLayer_canvas()">- Layer inside CANVAS</a><br>
+</td></tr><tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:alert(genLIB.document.childrens.length)">document childrens</a><br>
+<a onfocus="this.blur()" href="javascript:alert(canvas.childrens.length)">canvas childrens</a><br>
+</td></tr><tr><td bgcolor=#f0f0f0 align=right>
+<a onfocus="this.blur()" href="javascript:movefromto(genLIB.document,canvas)">move from document to canvas</a><br>
+</td></tr></table>
+</body>
+</html>

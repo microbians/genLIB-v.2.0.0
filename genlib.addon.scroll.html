@@ -1,0 +1,36 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language='javascript' src='genlib.js'></script>
+<script>
+	genLIB.include('addons.loadlayer')
+	genLIB.include('addons.scroll')
+</script>
+<script>
+debughead = "<font face=verdana size=1 color='#FFFFFF'><b>DEBUG</b></font><br><br><font face='lucida console' size=1 color='#000000'>"
+
+function showdebug(t) { 
+	if ( debug.contentH() > debug.h-10 ) debug.setHTML(debughead)
+	debug.setHTML(debug.html+t+"<br>")
+}
+
+genLIB.onload=function() {
+	canvas = new domLayer("canvas",10,40,320,200,"#f0f0f0");
+	genLIB.document.add(canvas);
+	canvas.setHTML("CANVAS inside document");
+	canvas.css.font='bold 10px verdana'
+	myframeLay=new loadLayer(null,0,0,200,175,null,'genlib.addon.loadlayer_t1.html','loading','bold 10px verdana','white')
+	myframeLay.css.font='normal 10px verdana'
+	myframeLay.css.padding='10px'
+	panel1=new scroll(10,20,200,175,myframeLay,'#C0C0C0','#E0E0E0','#A0A0A0','red','black')
+	canvas.add( panel1 )
+}
+</script>
+
+</head>
+<body>
+<span style="font:bold 10px verdana">Show the cloned var in IFRAME <a href="#" onclick="myfn()">myfn (exec FUNCTION)</a></span>
+</body>
+</html>

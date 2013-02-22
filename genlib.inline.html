@@ -1,0 +1,138 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<style>
+body { background-color: #FFFFFF; color: #000000; font-family: Verdana; }
+A:link    	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:visited 	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:active  	{ font-size:10px; font-family: Verdana; color:#000000; font-weight: bold; text-decoration: none; }
+A:hover  	{ font-size:10px; font-family: Verdana; color:#FFFFFF; background-color:#000000; font-weight: bold; text-decoration: none; }
+</style>
+<script language="Javascript" src="genlib.js"></script>
+<script language="Javascript">
+genLIB.onload=function(){
+	lControl = new domLayer('takecontrollink')
+}
+
+takeControl=function() {
+	lControl.setHTML('')
+	lControl.css.font='normal 9px verdana'
+
+	var mainlayer = new domLayer('mainlayer')
+	mainlayer.css.font='bold 9px verdana'
+	var c1= new domLayer('c1')
+	c1.css.font='normal 10px verdana'
+	var c2= new domLayer('c2')
+	c2.css.font='normal 10px verdana'
+	var c3= new domLayer('c3')
+	c3.css.font='normal 10px verdana'
+
+	mainlayer.moveTo(20,20)
+	mainlayer.setVisible(true)
+	mainlayer.setBgColor('#C0C0C0')
+	mainlayer.resizeTo(300,75)
+
+	c1.setVisible(true)
+	c1.setBgColor('#FBF9DB')
+	c1.moveTo(20,20)
+	c1.resizeTo(200,15)
+	c2.setVisible(true)
+	c2.setBgColor('#D7F3F7')
+	c2.moveTo(20,35)
+	c2.resizeTo(200,15)
+	c3.setVisible(true)
+	c3.setBgColor('#F7F3F7')
+	c3.moveTo(20,50)
+	c3.resizeTo(200,15)
+
+	var c1event = new EventListener(mainlayer)
+	c1event.onclick = function(e) {
+		var t=e.target
+		var s=e.source
+		c1.killEvent("click")
+		c1.setHTML("onclick event killed for c1")
+		mainlayer.setHTML("inline MAIN Layer [ CLICK c1 ]")
+		e.bubble=false
+	}
+	c1event.onmouseover = function(e) {
+		var t=e.target
+		var s=e.source
+		mainlayer.setHTML("inline MAIN Layer [ OVER c1 ]")
+		t.setBgColor(s.bgColor)
+		s.setBgColor("#C0C0C0")
+		e.bubble=false
+	}
+	c1event.onmouseout = function(e) {
+		var t=e.target
+		var s=e.source
+		s.setBgColor("#FBF9DB")
+		t.setBgColor("#C0C0C0")
+		e.bubble=false
+	}
+	c1.addEventListener(c1event)
+
+	var c2event = new EventListener(mainlayer)
+	c2event.onclick = function(e) {
+		var t=e.target
+		var s=e.source
+		mainlayer.setHTML("inline MAIN Layer [ CLICK c2 ]")
+		e.bubble=false
+	}
+	c2event.onmouseover = function(e) {
+		var t=e.target
+		var s=e.source
+		mainlayer.setHTML("inline MAIN Layer [ OVER c2 ]")
+		t.setBgColor(s.bgColor)
+		s.setBgColor("#C0C0C0")
+		e.bubble=false
+	}
+	c2event.onmouseout = function(e) {
+		var t=e.target
+		var s=e.source
+		s.setBgColor("#D7F3F7")
+		t.setBgColor("#C0C0C0")
+		e.bubble=false
+	}
+	c2.addEventListener(c2event)
+
+	var c3event = new EventListener(mainlayer)
+	c3event.onclick = function(e) {
+		var t=e.target
+		var s=e.source
+		mainlayer.setHTML("inline MAIN Layer [ CLICK c3 ]")
+		e.bubble=false
+	}
+	c3event.onmouseover = function(e) {
+		var t=e.target
+		var s=e.source
+		mainlayer.setHTML("inline MAIN Layer [ OVER c3 ]")
+		t.setBgColor(s.bgColor)
+		s.setBgColor("#C0C0C0")
+		e.bubble=false
+	}
+	c3event.onmouseout = function(e) {
+		var t=e.target
+		var s=e.source
+		s.setBgColor("#F7F3F7")
+		t.setBgColor("#C0C0C0")
+		e.bubble=false
+	}
+	c3.addEventListener(c3event)
+
+}
+
+</script>
+</head>
+
+<body>
+<div id="takecontrollink" style="position:absolute;"><a href="javascript:if (genLIB.loaded) takeControl()">Take control of inline layers</a></div>
+<br><br>
+<div id="mainlayer">inline MAIN Layer
+<div id="c1">inline child C1</div>
+<div id="c2">inline child C2</div>
+<div id="c3">inline child C3</div>
+</div>
+</body>
+</html>

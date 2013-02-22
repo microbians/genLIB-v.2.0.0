@@ -1,0 +1,23 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language="javascript" src="genlib.js"></script>
+<script>
+genLIB.include('addons.slide')
+
+genLIB.onload=function() {
+	mylayer = new domLayer(null,20,20,360,200,"#c0c0c0")
+	genLIB.document.add(mylayer)
+	mylayer.setHTML("&nbsp;<font face=verdana size=1 color='#FFFFFF'><b>SLIDE</b></font>")
+	mylayer.slide(null,null,200,200, null,null,100,20, 1)
+	winInit('top.window')
+	top.window.slide(null,null,300,300, null,null,400,300, 1)
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

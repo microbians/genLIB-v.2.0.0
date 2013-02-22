@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.O//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<style>
+body { background-color: #FFFFFF; color: #000000; font:normal 9px verdana}
+A:link    	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:visited 	{ font-size:10px; font-family: Verdana; color:#000000;  font-weight: bold; text-decoration: none; }
+A:active  	{ font-size:10px; font-family: Verdana; color:#000000; font-weight: bold; text-decoration: none; }
+A:hover  	{ font-size:10px; font-family: Verdana; color:#FFFFFF; background-color:#000000; font-weight: bold; text-decoration: none; }
+DIV             { font:normal 9px verdana }
+</style>
+<script language="Javascript" src="genlib.js"></script>
+<script language="Javascript">
+genLIB.onload= function() {
+	b=new domLayer(null,250,10,200,200)
+	b.setBgColor('#FF0000')
+	genLIB.document.add(b)
+
+	a=new domLayer(null,0,0)
+	b.add(a)
+
+	a.setBgColor('#FFD000')
+	a.setHTML("<img src=img/2.gif>MAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN LayerMAIN Layer", true)
+
+	debug=new domLayer(null,10,300,"auto","auto",'#f0f0f0')
+	genLIB.document.add(debug)
+	debug.setZ(200)
+
+	setInterval("showDimensions()",500)
+
+	pp='<NOBR><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif><img src=img/1.gif></NOBR>'
+}
+
+function showDimensions(){
+	var txt=""
+	txt+="A width: "+ a.w +"<br>"
+	txt+="A content Width: "+ a.contentW() +"<br>"
+	txt+="A height: "+ a.h +"<br>"
+	txt+="A content Height: "+ a.contentH() +"<br>"
+
+	txt+="- - - - - - - - - - - - " +"<br>"
+
+	txt+="B width: "+ b.w +"<br>"
+	txt+="B content Width: "+ b.contentW() +"<br>"
+	txt+="B height: "+ b.h +"<br>"
+	txt+="B content Height: "+ b.contentH() +"<br>"
+
+	debug.setHTML(txt, true)
+}
+
+function showDebug() {
+	var txt=""
+	var c=0
+	for(i in a.elm.html) { 
+		c++
+		if (i) txt+= (i+" = "+a.elm.html[i]+"\n") 
+		if (c>10) {
+			alert(txt)
+			c=0
+			txt=''
+		}
+	}
+}
+
+
+
+domLayer.prototype.setB=function(t,r,b,l) {
+	if (t) this.css.borderTop=t;
+	if (r) this.css.borderRight=r;
+	if (b) this.css.borderBottom=b;
+	if (l) this.css.borderLeft=l;
+}
+
+domLayer.prototype.setP=function(t,r,b,l) {
+	if (t) this.css.paddingTop=t;
+	if (r) this.css.paddingRight=r;
+	if (b) this.css.paddingBottom=b;
+	if (l) this.css.paddingLeft=l;
+}
+
+
+domLayer.prototype.fixDimensions=function() {
+	if (this.w=='auto') { this.setW(this.elm.scrollWidth) }
+	if (this.h=='auto') { this.setH(this.elm.scrollHeight) }
+}
+
+</script>
+</head>
+<body>
+<a onfocus="this.blur()" href="javascript:a.setHTML('. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ', true)">htmlset[1] clearall</a><br>
+<a onfocus="this.blur()" href="javascript:a.setHTML('MAIN Layer', true)">htmlset[2] clearall</a><br><br>
+<a onfocus="this.blur()" href="javascript:a.setHTML('', true);a.setHTML(window.pp)">htmlset[1] span preserve childs</a><br>
+<a onfocus="this.blur()" href="javascript:a.setHTML('', true);a.setHTML('MAIN Layer')">htmlset[2] span preserve childs</a><br><br>
+<br>
+width
+<a onfocus="this.blur()" href="javascript:a.setW(0)">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setW(15)">15</a> | 
+<a onfocus="this.blur()" href="javascript:a.setW(150)">150</a> | 
+<a onfocus="this.blur()" href="javascript:a.setW(400)">400</a> | 
+<a onfocus="this.blur()" href="javascript:a.setW('auto')">auto</a> | 
+<a onfocus="this.blur()" href="javascript:if (a.w!='auto')a.setW(a.w+10)">+</a> | 
+<a onfocus="this.blur()" href="javascript:if (a.w!='auto')a.setW(a.w-10)">-</a>
+<br>
+height
+<a onfocus="this.blur()" href="javascript:a.setH(0)">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setH(15)">15</a> | 
+<a onfocus="this.blur()" href="javascript:a.setH(150)">150</a> | 
+<a onfocus="this.blur()" href="javascript:a.setH(400)">400</a> | 
+<a onfocus="this.blur()" href="javascript:a.setH('auto')">auto</a> | 
+<a onfocus="this.blur()" href="javascript:if (a.h!='auto')a.setH(a.h+10)">+</a> | 
+<a onfocus="this.blur()" href="javascript:if (a.h!='auto')a.setH(a.h-10)">-</a>
+<br>
+<br>
+width
+<a onfocus="this.blur()" href="javascript:b.setW(0)">0</a> | 
+<a onfocus="this.blur()" href="javascript:b.setW(15)">15</a> | 
+<a onfocus="this.blur()" href="javascript:b.setW(150)">150</a> | 
+<a onfocus="this.blur()" href="javascript:b.setW(400)">400</a> | 
+<a onfocus="this.blur()" href="javascript:b.setW('auto')">auto</a> | 
+<a onfocus="this.blur()" href="javascript:if (b.w!='auto')b.setW(b.w+10)">+</a> | 
+<a onfocus="this.blur()" href="javascript:if (b.w!='auto')b.setW(b.w-10)">-</a>
+<br>
+height
+<a onfocus="this.blur()" href="javascript:b.setH(0)">0</a> | 
+<a onfocus="this.blur()" href="javascript:b.setH(15)">15</a> | 
+<a onfocus="this.blur()" href="javascript:b.setH(150)">150</a> | 
+<a onfocus="this.blur()" href="javascript:b.setH(400)">400</a> | 
+<a onfocus="this.blur()" href="javascript:b.setH('auto')">auto</a> | 
+<a onfocus="this.blur()" href="javascript:if (b.h!='auto')b.setH(b.h+10)">+</a> | 
+<a onfocus="this.blur()" href="javascript:if (b.h!='auto')b.setH(b.h-10)">-</a>
+
+<br>
+<br>
+borderTop
+<a onfocus="this.blur()" href="javascript:a.setB('0px solid orange')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB('10px solid orange')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB('20px solid orange')">20</a>
+<br>
+borderRight
+<a onfocus="this.blur()" href="javascript:a.setB(null,'0px solid orange')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB(null,'10px solid orange')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB(null,'20px solid orange')">20</a>
+<br>
+borderBottom
+<a onfocus="this.blur()" href="javascript:a.setB(null,null,'0px solid orange')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB(null,null,'10px solid orange')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB(null,null,'20px solid orange')">20</a>
+<br>
+borderLeft
+<a onfocus="this.blur()" href="javascript:a.setB(null,null,null,'0px solid orange')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB(null,null,null,'10px solid orange')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setB(null,null,null,'20px solid orange')">20</a>
+<br>
+<br>
+paddingTop
+<a onfocus="this.blur()" href="javascript:a.setP('0px')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP('10px')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP('20px')">20</a>
+<br>
+paddingRight
+<a onfocus="this.blur()" href="javascript:a.setP(null,'0px')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP(null,'10px')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP(null,'20px')">20</a>
+<br>
+paddingBottom
+<a onfocus="this.blur()" href="javascript:a.setP(null,null,'0px')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP(null,null,'10px')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP(null,null,'20px')">20</a>
+<br>
+paddingLeft
+<a onfocus="this.blur()" href="javascript:a.setP(null,null,null,'0px')">0</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP(null,null,null,'10px')">10</a> | 
+<a onfocus="this.blur()" href="javascript:a.setP(null,null,null,'20px')">20</a>
+
+</body>
+</html>

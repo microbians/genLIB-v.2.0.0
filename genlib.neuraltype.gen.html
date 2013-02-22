@@ -1,0 +1,204 @@
+<html>
+<head>
+
+<!-- TITLE & CHARSET -->
+
+<meta http-equiv="content-type"     content="text/html;charset=iso-8859-1">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<!-- AUTOR -->
+
+<META name="Author" content="microbians.com / Gabriel Suchowolski (power[z]one) - powerz@microbians.com">
+<META name="Terms"  content="Distributed under the terms of the GNU LGPL license ( www.gnu.org )">
+
+<!-- LOAD CSS -->
+
+<style>
+body { 
+		font-family: 		Verdana, Arial, Helvetica; 
+		font-size:		8pt; 
+		margin: 		0 px;
+		overflow: 		auto;
+		background-color: 	#FFFFFF;
+		color: 			#000000;
+		SCROLLBAR-FACE-COLOR: #b9b9b9; 
+		SCROLLBAR-HIGHLIGHT-COLOR: #b9b9b9; 
+		SCROLLBAR-SHADOW-COLOR: #b9b9b9; 
+		SCROLLBAR-3DLIGHT-COLOR: #b9b9b9; 
+		SCROLLBAR-DARKSHADOW-COLOR: #b9b9b9; 
+		SCROLLBAR-ARROW-COLOR: #F0F0F0; 
+		SCROLLBAR-TRACK-COLOR: #F0F0F0; 
+		SCROLLBAR-BASE-COLOR: #F0F0F0;
+}
+
+
+A:link    	{ font-family: Verdana, Arial, Helvetica; color:#FF6000; font-weight: bold; text-decoration: none; }
+A:visited 	{ font-family: Verdana, Arial, Helvetica; color:#FF6000; font-weight: bold; text-decoration: none; }
+A:active  	{ font-family: Verdana, Arial, Helvetica; color:#000000; font-weight: bold; text-decoration: none; }
+A:hover  	{ font-family: Verdana, Arial, Helvetica; color:#000000; font-weight: bold; text-decoration: none; }
+
+INPUT,TEXTAREA {
+		font-family:lucida console; 
+		font-size:8pt; 
+
+		border:1 solid #E0E0E0;
+		background-color: 	#F0F0F0;
+		
+		SCROLLBAR-FACE-COLOR: #b9b9b9; 
+		SCROLLBAR-HIGHLIGHT-COLOR: #b9b9b9; 
+		SCROLLBAR-SHADOW-COLOR: #b9b9b9; 
+		SCROLLBAR-3DLIGHT-COLOR: #b9b9b9; 
+		SCROLLBAR-DARKSHADOW-COLOR: #b9b9b9; 
+		SCROLLBAR-ARROW-COLOR: #F0F0F0; 
+		SCROLLBAR-TRACK-COLOR: #F0F0F0; 
+		SCROLLBAR-BASE-COLOR: #F0F0F0;
+}
+
+</style>
+
+<!-- LOAD & SET GENLIB -->
+
+<script language='javascript' src='genlib.js'></script>
+<script>
+	genLIB.include('addons.neuraltype')
+</script>
+<script>
+genLIB.onload=function() {
+	canvas = new domLayer( null, 20, 120, 500, 200, "#c0c0c0", false, 0)
+	genLIB.document.add( canvas )
+
+	letter = new domLayer( null, 1, 1, null, null, null, null, 0 )
+	canvas.add( letter )
+
+	jslayer = new domLayer( null, 1, 1, null, null, null, false, 0 )
+	genLIB.document.add( jslayer )
+
+	sometext = new domLayer( null, 1, 1, null, null, null, false, 0 )
+	genLIB.document.add( sometext )
+
+}
+
+function doStuff() {
+
+
+	fontfamily = FNTfamily.value
+	bgColor    = FNTbgcolor.value
+	fontname   = FNTname.value
+	fontsize   = FNTsize.value
+	fontcolor  = FNTcolor.value
+
+	jslayer.setHTML("To make <b>"+fontname+".js</b> file<br><font style='font-size=9px' color=#a0a0a0>(copy & and paste on a blank js file)</font><br><textarea id=sizeoutput style='width:500; height:170;'></textarea>")
+
+	elfont="style='font-family: "+ fontfamily +"; font-size: "+ fontsize +"px; color:"+ fontcolor +";'"
+
+	sizeoutput.value = ""
+
+	// general characters (32-255)
+
+	maxW=0
+	maxH=0
+
+	charwidth = new Array()
+
+	for(var n=33;n<=255;n++) {
+		letter.setHTML("<span "+elfont+">" + String.fromCharCode(n) + "<img width=1 height=1 align=bottom></span>")
+		charwidth[n-32]=letter.contentW()-1
+		if ( charwidth[n-32] > maxW )              maxW=charwidth[n-32]
+		if ( letter.contentH() > maxH ) maxH=letter.contentH()
+	}
+
+	n=32
+	letter.setHTML("<span "+ elfont +">\&nbsp\;<img width=1 height=1 align=bottom></span>")
+	charwidth[n-32]=letter.contentW()-1
+
+	// visual part
+	var CHRsetvisual = "<table cellspacing=0 cellpadding=0 border=0 width="+maxW*16+">"
+
+	for (var col=2; col<16; col++) {
+		CHRsetvisual+="<tr height="+maxH+">";
+		for (var rw=0; rw<16; rw++) {
+			ch=col*16+rw;
+			CHRsetvisual+="<td bgcolor="+ bgColor +" align=left valign=top "+elfont+" width="+maxW+">" + String.fromCharCode(ch) + "</td>";
+		}
+		CHRsetvisual+="</tr>";
+	}
+	CHRsetvisual+="</table>";
+
+	letter.setHTML(CHRsetvisual)
+
+	canvas.resizeTo( letter.contentW()+2 , letter.contentH()+2 )
+
+	sometext.setHTML("To make <b>"+fontname+".gif</b> file<br><font style='font-size=9px' color=#a0a0a0>(printscreen & crop the content with no border)</font>")
+	sometext.moveTo(20, canvas.y-sometext.contentH()-1)
+
+	// Data part
+
+	var sizes = ""
+	for(var n=32;n<=255;n++) {
+		sizes +=charwidth[n-32]+", "
+	}
+	sizes= sizes.substr( 0, sizes.length - 2)
+
+	sizeoutput.value += "\n"+ "neuralType.font['"+ fontname +"']=new neuralType('"+fontname +"',"+ maxW +","+ maxH +",0,0,["+sizes+"])\n\n"
+
+	jslayer.moveTo(20,letter.contentH()+canvas.y+20)
+	jslayer.setVisible(true)
+	canvas.setVisible(true)
+	sometext.setVisible(true)
+}
+
+function ineedhelp() {
+	if (hlayer.style.visibility=="visible") hlayer.style.visibility="hidden"
+	else                                    hlayer.style.visibility="visible"
+}
+
+
+</script>
+
+</head>
+<body>
+<div style="position:absolute;left: 20;top:15;">neuralTYPE generator v.1.3 › <a href="http://www.microbians.com">microbians.com</a> › © Gabriel Suchowolski<br><font style="font-size=9px" color=#a0a0a0>Distributed under the terms of the GNU LGPL license ( www.gnu.org )</font></div>
+<div style="position:absolute;left: 20;top:50;">Font family<br><input style="width:100;" id=FNTfamily value='arial black'></div>
+<div style="position:absolute;left:130;top:50;">Font size<br><input style="width:100;" id=FNTsize value=11></div>
+<div style="position:absolute;left:240;top:50;">Font color<br><input style="width:100;" id=FNTcolor value="#000000"></div>
+<div style="position:absolute;left:350;top:50;">Background color<br><input style="width:100;" id=FNTbgcolor value="#ffffff"></div>
+<div style="position:absolute;left:460;top:50;">neuralTYPE name<br><input style="border:1 solid #000000; width:100;" id=FNTname value="arialblack"></div>
+<div style="position:absolute;left:580;top:50;">&nbsp;<br><input onclick="doStuff()" type=button style="border:1 solid #FF6000; width:80;" value="Generate"></div>
+<div style="position:absolute;left:670;top:50;">&nbsp;<br><input onmousedown="ineedhelp()" type=button style="border:1 solid #FF6000; width:20;" value="?"></div>
+
+<div id=hlayer style="position:absolute;left:290;top:90; width:400px; background-color:#FFFFFF; border:1 solid #c0c0c0; visibility:hidden; z-index:10">
+<P style="margin:10;">
+<font color=#FF6000><b>What's da thing man?</b></font><br><br>
+neuralTYPE generator is a tool to make fonts in a gif and generate the necesary kerning data to
+use it with neuraltype.js, that is a set of functions for genLIB 2 to write a text with it.<br>
+<br>
+Run <a href="neuraltype_test.html">neuraltype_test.html</a> to look an example.<br>
+</P>
+<P style="margin:10;">
+<font color=#FF6000><b>Why?</b></font><br><br>
+Why not xD I made that tool for all people has working like robots doing thousands of little buttons for a web with a custom font because not all browsers support font embeding and style sheets in a same way.
+</P><P style="margin:10;">
+<font color=#FF6000><b>How to use the neuralTYPE generator</b></font><br>
+<br><font face=terminal>[ 1 ] </font> Fill the form 
+<br><font face=terminal>[ 2 ] </font> Take care neuralTYPE name has no spaces or simbols
+<br><font face=terminal>[ 3 ] </font> Click "generate"
+<br><font face=terminal>[ 4 ] </font> Capture the region in grey and generate a gif
+<br><font face=terminal>[ 5 ] </font> Generate a JS file from the text area
+<br><font face=terminal>[ 6 ] </font> Retouch as you like the gif file (make it transparent)
+<br><font face=terminal>[ 5 ] </font> Set the gif and the js on the same folder
+<br><font face=terminal>[ 6 ] </font> Retouch the neuraltype_test.html to handdle new font
+<br><font face=terminal>[ 7 ] </font> It's ok? you rulez ... not? go to step 1 xD
+<br><br>
+<font color=#FF6000><b>Hints</b></font><br>
+<font face=terminal>
+<br><br>
+Color data in #rrggbb format<br><br>
+Size data in pixels<br><br>
+The final area for the gif must be the inside content of the grey box (with not the grey border)<br><br>
+Yes, you can send me an email... but after you are working with this tool 20 times and still having problems xD<br></font>
+</P>
+</div>
+
+</body>
+</html>

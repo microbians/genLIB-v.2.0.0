@@ -1,0 +1,68 @@
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<title>MICROBIANS GENLIB DHTML API | microbians.com</title>
+
+<script language="javascript" src="genlib.js"></script>
+
+<script>
+debughead = "&nbsp;<font face=verdana size=1 color='#FFFFFF'><b>DEBUG</b></font><br><font face='lucida console' size=1 color='#000000'>"
+
+genLIB.onload=function() {
+	debug = new domLayer(null,20,20,360,200,"#c0c0c0")
+	genLIB.document.add(debug)
+	debug.setHTML(debughead)
+
+	lyrcontrol = new domLayer("lyrcontrol",20,60,75,75)
+	lyrcontrol.setBgColor('orange')
+
+	l = new EventListener()
+	l.ondrag = function(e) { 
+		//window.status= 'MOUSE x=' + e.pageX + " | "+' Y=' + e.pageY
+	}
+	l.onmousedown = function(e) { 
+		debug.setHTML( debughead + '&nbsp;MOUSE DOWN') 
+	}
+	l.onmouseup = function(e) { 
+		debug.setHTML( debughead + '&nbsp;MOUSE UP') 
+		//window.status="MOUSE UP"
+	}
+	l.onclick = function(e) { 
+		debug.setHTML( debughead + '&nbsp;MOUSE CLICK') 
+	}
+	lyrcontrol.setLimit(10,300,190,10)
+	lyrcontrol.addEventListener(l)
+	lyrcontrol.titulo='drag me'
+	debug.addEventListener(l)
+	debug.add(lyrcontrol)
+	debug.titulo='drag me too'
+
+	// TITLE EVENT
+	hits = new domLayer(null)
+	hits.setZ(1)
+	hits.css.color='white'
+	hits.css.font='normal 9px verdana'
+	genLIB.document.add(hits)
+	mouse.control=function(type,e) {
+		if(type=='mouseover' && !e.isondrag) {
+			var el=e.source
+			while(!el.titulo && el.parent) el=el.parent;
+			if(el.titulo) { hits.setHTML(el.titulo,true); hits.setVisible(true) }
+		} else if (type=='mousemove') {
+			hits.moveTo(e.pageX+10,e.pageY+10);
+		} else {
+			hits.setVisible(false)
+		}
+	}
+	genLIB.document.addEvent('mousemove')
+	genLIB.document.addEvent('mouseover')
+	genLIB.document.addEvent('mouseout')
+}
+
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
